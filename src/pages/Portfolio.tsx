@@ -1,0 +1,58 @@
+import { Link } from "react-router-dom";
+import "../index.css";
+import myLogo from "../assets/mylogo.jpg";
+import Trail from "../components/Trail"; // make sure the path is correct
+
+export default function Portfolio() {
+  return (
+    <div>
+      {/* Continuous Cursor Trail */}
+      <Trail />
+
+      {/* Stars Background */}
+      <div className="stars">
+        {Array.from({ length: 150 }).map((_, i) => (
+          <div
+            key={i}
+            className="star"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 2 + 1}px`,
+              height: `${Math.random() * 2 + 1}px`,
+              animationDuration: `${Math.random() * 5 + 2}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Navbar (Matches Home.tsx) */}
+      <nav className="navbar">
+        <div className="brand-container">
+          <img src={myLogo} alt="Logo" className="logo-img" />
+          <h1 className="brand-title glitch-text" data-text="GlitchGraphix">
+            GlitchGraphix
+          </h1>
+        </div>
+
+        <div className="nav-buttons">
+          <Link to="/"><button>Home</button></Link>
+          <Link to="/services"><button>Services</button></Link>
+          <Link to="/portfolio"><button>Portfolio</button></Link>
+          <Link to="/about"><button>About</button></Link>
+        </div>
+      </nav>
+
+      {/* Hero Section Wrapper for positioning */}
+      <div style={{ padding: "100px 0 50px 0" }}>
+        <section className="portfolio-hero">
+          <h1 className="portfolio-title neon-glow">PORTFOLIO</h1>
+          <p className="portfolio-tagline">Our favorite & most iconic projects</p>
+        </section>
+      </div>
+
+      {/* Footer */}
+      <footer>&copy; 2025 GlitchGraphix. All Rights Reserved.</footer>
+    </div>
+  );
+}
